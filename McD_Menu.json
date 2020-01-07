@@ -1,0 +1,193 @@
+{
+    "source_url": "https://www.fastfoodmenuprices.com/mcdonalds-prices/",
+    "source_state": "alabama",
+    "food": {
+        "extravalueMeals": {
+            "bigMac": 3.99,
+            "cheeseburgers": 2.00,
+            "quarterPounderwithCheese": 3.79,
+            "DoubleQuarterPounderwithCheese": 4.79,
+            "BaconClubhouseBurger": 4.49,
+            "ButtermilkCrispyChicken": 4.39,
+            "ArtisanGrilledChicken": 4.39,
+            "PremiumMcWrapChickenBacon": 4.39,
+            "PremiumMcWrapChickenRanch": 4.39,
+            "PremiumMcWrapSweetChiliChicken": 4.39,
+            "Filet-O-Fish": 3.79,
+            "DoubleFilet-O-Fish": 4.79,
+            "PremiumChickenBaconClubhouse": 4.49,
+            "meals": {
+                "BigMac": 5.99,
+                "Cheeseburgers": 4.89,
+                "QuarterPounderwithCheese": 5.79,
+                "DoubleQuarterPounderwithCheese": 6.69,
+                "BaconClubhouseBurger": 6.49,
+                "ButtermilkCrispyChicken": 6.39,
+                "ArtisanGrilledChicken": 6.39,
+                "PremiumMcWrapChickenBacon": 6.39,
+                "PremiumMcWrapChickenRanch": 6.39,
+                "PremiumMcWrapSweetChiliChicken": 6.39,
+                "Filet-O-Fish": 5.79,
+                "DoubleFilet-O-Fish": 6.79,
+                "PremiumChickenBaconClubhouse": 6.49
+            }
+        },
+        "nuggets": {
+            "4pc": 1.99,
+            "6pc": 3.99,
+            "10pc": 4.49,
+            "20pc": 5,
+            "40pc": 8.99
+        },
+        "salads": {
+            "SouthWest": 4.79,
+            "BaconRanch": 4.59
+        },
+        "sides": {
+            "fries": {
+                "small": 1.39,
+                "medium": 1.79,
+                "large": 1.89
+            },
+            "mozzaSticks": 1.19,
+            "chickenWrap": 1.69
+        },
+        "mcvalue": {
+            "GrilledOnionCheddarBurger": 1.00,
+            "McDouble": 1.39,
+            "McChicken": 1.29,
+            "BBQRanchBurger": 1.00,
+            "Cheeseburger": 1.00,
+            "DoubleCheeseburger": 1.69,
+            "DailyDouble": 1.99,
+            "BaconMcDouble": 2.00,
+            "Parfait": 1.00,
+            "SideSalad": 1.59,
+            "Cookies": 1.00,
+            "Cone": 1.00,
+            "AppleSlices": 1.00,
+            "PremiumMcWrapChickenRanch": 4.39,
+            "PremiumMcWrapSweetChiliChicken": 4.39,
+            "Filet-O-Fish": 3.79,
+            "DoubleFilet-O-Fish": 4.79,
+            "PremiumChickenBaconClubhouse": 4.49,
+            "meals": {
+                "PremiumMcWrapChickenRanch": 6.39,
+                "PremiumMcWrapSweetChiliChicken": 6.39,
+                "Filet-O-Fish": 5.79,
+                "DoubleFilet-O-Fish": 6.79,
+                "PremiumChickenBaconClubhouse": 6.49
+            }
+        },
+        "Breakfast": {
+            "SausageBurrito": 1.29,
+            "SausageMcMuffin": 1.19,
+            "SausageBiscuit": 1.19,
+            "HashBrowns": 1.09,
+            "EggnCheeseBiscuit": 1.39,
+            "CinnamonMelt": 1.69,
+            "EggWhiteDelightMcMuffin": 2.79,
+            "EggMcMuffin": 2.79,
+            "SausageMcMuffinwithEgg": 2.99,
+            "BaconEggCheeseBiscuit": 3.19,
+            "SausageBiscuitwithEgg": 2.79,
+            "SausageGravyBiscuit": 2.89,
+            "BaconEggCheeseMcGriddles": 3.29,
+            "SausageEggCheeseMcGriddles": 3.29,
+            "SausageMcGriddles": 2.79,
+            "BaconEggCheeseBagel": 3.29,
+            "SteakEggCheeseBagel": 3.99,
+            "SausageBurritos": 2.39,
+            "meals": {
+                "EggWhiteDelightMcMuffin": 3.99,
+                "EggMcMuffin": 3.99,
+                "SausageMcMuffinwithEgg": 4.19,
+                "BaconEggCheeseBiscuit": 4.39,
+                "SausageBiscuitwithEgg": 3.99,
+                "SausageGravyBiscuit": 4.89,
+                "BaconEggCheeseMcGriddles": 4.49,
+                "SausageEggCheeseMcGriddles": 4.49,
+                "SausageMcGriddles": 4.49,
+                "BaconEggCheeseBagel": 4.99,
+                "SteakEggCheeseBagel": 5.19,
+                "SausageBurritos": 4.29
+            }
+        },
+        "morningplatter": {
+            "BigBreakfastwithHotCakes": 5.49,
+            "BigBreakfast": 3.69,
+            "SausageGravyBiscuit": 2.99,
+            "HotCakeswithSausage": 3.19,
+            "HotCakes": 2.49
+        },
+        "Fruit & Maple Oatmeal": 1.99
+    },
+    "drink": {
+        "Smoothie": {
+            "small": 2.39,
+            "medium": 2.89,
+            "large": 3.39
+        },
+        "Frappe": {
+            "small": 2.39,
+            "medium": 2.89,
+            "large": 3.39
+        },
+        "EspressoandChocolate": {
+            "small": 2.39,
+            "medium": 2.89,
+            "large": 3.39
+        },
+        "PremiumRoastCoffee": {
+            "small": 1.00,
+            "medium": 1.29,
+            "large": 1.49
+        },
+        "IcedCoffee": {
+            "small": 1.39,
+            "medium": 1.79,
+            "large": 1.99
+        },
+        "SweetTea": {
+            "small": 1.00,
+            "medium": 1.29,
+            "large": 1.49
+        },
+        "SoftDrink": {
+            "small": 1.00,
+            "medium": 1.29,
+            "large": 1.49
+        },
+        "OrangeJuice": {
+            "small": 1.59,
+            "medium": 1.89,
+            "large": 2.09
+        },
+        "Milk": 1.00,
+        "DasaniWater": 1.00
+    },
+    "sweets": {
+        "Shake": {
+            "small": 2.19,
+            "medium": 2.59,
+            "large": 2.99
+        },
+        "ShamrockShake": {
+            "small": 2.19,
+            "medium": 2.59,
+            "large": 2.99
+        },
+        "Sundae": 1.29,
+        "ApplePie": 0.99,
+        "Cone": 1.00,
+        "McFlurry": {
+            "snack": 1.79,
+            "regular": 2.39
+        },
+        "Cookie": {
+            "1pc": 0.39,
+            "3pc": 1.00
+        },
+        "StrawberryCremePie": 0.99
+    }
+}

@@ -1,6 +1,8 @@
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
+var menu = require('./McD_Menu.json');
+var menuParsed = require("jsonq")(menu);
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -34,9 +36,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             case 'ping':
                 bot.sendMessage({
                     to: channelID,
-                    message: 'Pong!'
+                    message: 'Pong! '
                 });
-                break;
+            break;
+
+            case "pic":
+                bot.uploadFile({
+                    to: channelID,
+                    message: "That will be " + 10 + "dkk",
+                    file: "Images/Vester_Skerninge.jpg"
+                });
+            break;
+
                 // Just add any case commands if you want to..
         }
     }
