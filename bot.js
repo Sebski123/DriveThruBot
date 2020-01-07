@@ -24,6 +24,8 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
+
+    message = message.toLowerCase()
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
     if (message.substring(0, 1) == '!') {
@@ -38,7 +40,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     to: channelID,
                     message: 'Pong! '
                 });
-            break;
+                break;
 
             case "pic":
                 bot.uploadFile({
@@ -46,9 +48,53 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: "That will be " + 10 + "dkk",
                     file: "Images/Vester_Skerninge.jpg"
                 });
-            break;
+                break;
+
+            case "order":
+                Order(user, args)
+                break;
 
                 // Just add any case commands if you want to..
         }
     }
 });
+
+function Order(user, args) {
+    //Initialize variable 
+    let cost = 0;
+    let ignored = []
+
+    // for each item in order
+    for (let i of args) {
+        let val = ""
+        let result = menuParsed.find(i)
+
+        if (result.value().length) {
+
+            //Filter out meals
+            for (let i of result.jsonQ_current) {
+                if (!i.path.includes("meals")) {
+                    val = menuParsed.pathValue(i.path)
+                }
+            }
+
+            //logger.debug("Befor NaN check: " + val)
+
+            if (isNaN(val)) {
+                logger.debug(val + " is not a number")
+                break
+            } else {
+                if (Array.isArray(val)) {
+                    cost += val[0]
+                } else {
+                    cost += val
+                }
+            }
+        } else {
+            ignored.push(i)
+        }
+    }
+    //Print final price and unknown items
+    logger.info("Total value was: " + cost)
+    logger.info("Ignored: " + ignored)
+}
