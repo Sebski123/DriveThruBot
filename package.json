@@ -6,6 +6,7 @@
     "author": "Sebski123",
     "dependencies": {
         "discord.io": "^2.5.3",
+        "jsonq": "^1.2.0",
         "winston": "^3.2.1"
     }
 }
