@@ -53,14 +53,21 @@ function Order(user, args) {
     let cost = 0;
     let ignored = []
     let isMeal = false
+    let size = ""
 
     // for each item in order
     for (let i of args) {
         let val = ""
 
-        //If last chars is '-m' (indicating meal), remove it and set flag
-        if(i.slice(-2) == "-m") {
+        //If last chars are ':m' (indicating meal), remove it and set flag
+        if(i.slice(-2) == ":m") {
             isMeal = true
+            i = i.slice(0, -2)
+        }
+
+        //If item has size (specified by '-s', '-m' or '-l') move it to variable
+        if(i.slice(-2) == "-s" || i.slice(-2) == "-m" || i.slice(-2) == "-l"){
+            size = i.slice(-1)
             i = i.slice(0, -2)
         }
 
@@ -78,6 +85,11 @@ function Order(user, args) {
                 } else {
                     if(isMeal) {val = menuParsed.pathValue(i.path)}
                 }
+            }
+
+            if (val == ""){
+                logger.warn("Item \'" + i + "\' does not have a meal option")
+                val = 0
             }
 
             //logger.debug("Befor NaN check: " + val)
