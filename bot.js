@@ -24,7 +24,6 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
-
     message = message.toLowerCase()
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
@@ -42,39 +41,42 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
                 break;
 
-            case "pic":
-                bot.uploadFile({
-                    to: channelID,
-                    message: "That will be " + 10 + "dkk",
-                    file: "Images/Vester_Skerninge.jpg"
-                });
-                break;
-
             case "order":
                 Order(user, args)
                 break;
-
-                // Just add any case commands if you want to..
         }
     }
 });
 
 function Order(user, args) {
-    //Initialize variable 
+    //Initialize variables 
     let cost = 0;
     let ignored = []
+    let isMeal = false
 
     // for each item in order
     for (let i of args) {
         let val = ""
+
+        //If last chars is '-m' (indicating meal), remove it and set flag
+        if(i.slice(-2) == "-m") {
+            isMeal = true
+            i = i.slice(0, -2)
+        }
+
+        //Try to find item in menu
         let result = menuParsed.find(i)
 
+        //If item was found in menu
         if (result.value().length) {
 
-            //Filter out meals
+
+            //Filter meals
             for (let i of result.jsonQ_current) {
                 if (!i.path.includes("meals")) {
-                    val = menuParsed.pathValue(i.path)
+                    if(!isMeal) {val = menuParsed.pathValue(i.path)}
+                } else {
+                    if(isMeal) {val = menuParsed.pathValue(i.path)}
                 }
             }
 
@@ -90,6 +92,7 @@ function Order(user, args) {
                     cost += val
                 }
             }
+        //If item wasn't found in menu, add item to ignored list
         } else {
             ignored.push(i)
         }
