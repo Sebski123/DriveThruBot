@@ -48,25 +48,38 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     }
 });
 
+let sizeConv = {
+    "s": "small",
+    "m": "medium",
+    "l": "large"
+}
+
 function Order(user, args) {
     //Initialize variables 
     let cost = 0;
     let ignored = []
+    let val = ""
     let isMeal = false
     let size = ""
 
+    for (let i of args){console.log(i)}
+
     // for each item in order
     for (let i of args) {
-        let val = ""
+        val = ""
+        isMeal = false
+        size = ""
+
+        logger.debug("Now testing: " + i)
 
         //If last chars are ':m' (indicating meal), remove it and set flag
-        if(i.slice(-2) == ":m") {
+        if (i.slice(-2) == ":m") {
             isMeal = true
             i = i.slice(0, -2)
         }
 
         //If item has size (specified by '-s', '-m' or '-l') move it to variable
-        if(i.slice(-2) == "-s" || i.slice(-2) == "-m" || i.slice(-2) == "-l"){
+        if (i.slice(-2) == "-s" || i.slice(-2) == "-m" || i.slice(-2) == "-l") {
             size = i.slice(-1)
             i = i.slice(0, -2)
         }
@@ -81,22 +94,34 @@ function Order(user, args) {
             //Filter meals
             for (let i of result.jsonQ_current) {
                 if (!i.path.includes("meals")) {
-                    if(!isMeal) {val = menuParsed.pathValue(i.path)}
+                    if (!isMeal) {
+                        val = menuParsed.pathValue(i.path)
+                    }
                 } else {
-                    if(isMeal) {val = menuParsed.pathValue(i.path)}
+                    if (isMeal) {
+                        val = menuParsed.pathValue(i.path)
+                    }
                 }
             }
 
-            if (val == ""){
+            if (val == "" && isMeal) {
                 logger.warn("Item \'" + i + "\' does not have a meal option")
+                ignored.push("".concat(i,":m"))
                 val = 0
             }
 
             //logger.debug("Befor NaN check: " + val)
 
             if (isNaN(val)) {
-                logger.debug(val + " is not a number")
-                break
+                if (val["small"] && val["medium"] && val["large"]) {
+                    if (size) {
+                        cost += val[sizeConv[size]]
+                        continue
+                    }
+                }
+                logger.debug("Your order of: " + val + " isn't valid")
+                ignored.push(val)
+                continue
             } else {
                 if (Array.isArray(val)) {
                     cost += val[0]
@@ -104,12 +129,15 @@ function Order(user, args) {
                     cost += val
                 }
             }
-        //If item wasn't found in menu, add item to ignored list
+            //If item wasn't found in menu, add item to ignored list
         } else {
             ignored.push(i)
         }
     }
     //Print final price and unknown items
+    cost = parseFloat(cost.toPrecision(3))
     logger.info("Total value was: " + cost)
     logger.info("Ignored: " + ignored)
+
+    return cost
 }
