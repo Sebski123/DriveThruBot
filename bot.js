@@ -47,7 +47,7 @@ if (process.env.NODE_ENV != "test") {
                     break;
 
                 case "order":
-                    Order(user, args)
+                    Order(user, userID, channelID, args)
                     break;
             }
         }
@@ -60,7 +60,7 @@ let sizeConv = {
     "l": "large"
 }
 
-function Order(user, args) {
+function Order(user, userID, channelID, args) {
     //Initialize variables 
     let cost = 0;
     let ignored = []
@@ -139,6 +139,11 @@ function Order(user, args) {
     cost = parseFloat(cost.toPrecision(3))
     logger.info("Total value was: " + cost)
     logger.debug("Ignored: " + ignored)
+
+    bot.sendMessage({
+        to: channelID,
+        message: "<@" + userID + "> Your order is ready\nThat will be $" + cost
+    });
 
     return cost
 }
