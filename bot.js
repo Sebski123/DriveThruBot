@@ -1,6 +1,8 @@
-var Discord = require('discord.io');
+if (process.env.NODE_ENV != "test") {
+    var Discord = require('discord.io');
+    var auth = require('./auth.json');
+}
 var logger = require('winston');
-var auth = require('./auth.json');
 var menu = require('./McD_Menu.json');
 var menuParsed = require("jsonq")(menu);
 
@@ -12,7 +14,7 @@ logger.add(new logger.transports.Console, {
 
 logger.level = 'info';
 
-if(process.env.NODE_ENV != "test"){
+if (process.env.NODE_ENV != "test") {
 
     // Initialize Discord Bot
     var bot = new Discord.Client({
@@ -107,7 +109,7 @@ function Order(user, args) {
 
             if (val == "" && isMeal) {
                 logger.warn("Item \'" + i + "\' does not have a meal option")
-                ignored.push("".concat(i,":m"))
+                ignored.push("".concat(i, ":m"))
                 val = 0
             }
 
