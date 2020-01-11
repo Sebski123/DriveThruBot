@@ -10,7 +10,7 @@ logger.add(new logger.transports.Console, {
     colorize: true
 });
 
-logger.level = 'debug';
+logger.level = 'info';
 // Initialize Discord Bot
 var bot = new Discord.Client({
     token: auth.token,
@@ -62,15 +62,12 @@ function Order(user, args) {
     let isMeal = false
     let size = ""
 
-    for (let i of args){console.log(i)}
-
     // for each item in order
     for (let i of args) {
         val = ""
         isMeal = false
         size = ""
 
-        logger.debug("Now testing: " + i)
 
         //If last chars are ':m' (indicating meal), remove it and set flag
         if (i.slice(-2) == ":m") {
@@ -110,8 +107,6 @@ function Order(user, args) {
                 val = 0
             }
 
-            //logger.debug("Befor NaN check: " + val)
-
             if (isNaN(val)) {
                 if (val["small"] && val["medium"] && val["large"]) {
                     if (size) {
@@ -137,7 +132,9 @@ function Order(user, args) {
     //Print final price and unknown items
     cost = parseFloat(cost.toPrecision(3))
     logger.info("Total value was: " + cost)
-    logger.info("Ignored: " + ignored)
+    logger.debug("Ignored: " + ignored)
 
     return cost
 }
+
+module.exports = Order
