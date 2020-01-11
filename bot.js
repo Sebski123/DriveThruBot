@@ -140,10 +140,13 @@ function Order(user, userID, channelID, args) {
     logger.info("Total value was: " + cost)
     logger.debug("Ignored: " + ignored)
 
-    bot.sendMessage({
-        to: channelID,
-        message: "<@" + userID + "> Your order is ready\nThat will be $" + cost
-    });
+    if (process.env.NODE_ENV != "test") {
+
+        bot.sendMessage({
+            to: channelID,
+            message: "<@" + userID + "> Your order is ready\nThat will be $" + cost
+        });
+    }
 
     return cost
 }
